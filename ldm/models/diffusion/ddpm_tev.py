@@ -1495,7 +1495,10 @@ class DiffusionWrapper(pl.LightningModule):
             out = self.diffusion_model(x, t, y=cc)
         else:
             raise NotImplementedError()
-
+        # 在forward函数中打印c_concat或c_crossattn的形状
+        print(f"Shape of c_concat: {c_concat[0].shape if c_concat else 'None'}")
+        print(f"Shape of c_crossattn: {c_crossattn[0].shape if c_crossattn else 'None'}")
+        print(f"Shape of cc: {cc.shape if cc else 'None'}")
         return out
 
 
